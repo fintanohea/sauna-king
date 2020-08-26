@@ -7,4 +7,5 @@
   command = "npm start"
   port = 4000
   publish = "src"
-  functions = "src/functions"  
+  functions = "src/functions"
+  
