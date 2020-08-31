@@ -27,4 +27,15 @@ export class ProductsService {
       }
     });
   }
+
+  modifyProduct(id): Observable<Product[]> {
+    return this.http.get<Product[]>('/.netlify/functions/modifyProduct', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      params: {
+        'id': id
+      }
+    });
+  }
 }

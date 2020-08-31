@@ -14,7 +14,7 @@ export class ProductsListItemComponent implements OnInit {
 
   constructor(private productsService: ProductsService) { }
 
-  getProduct(id){
+  getProduct(id) {
     this.isLoading.emit(true)
 
     this.productsService.getProduct(id)
@@ -23,6 +23,17 @@ export class ProductsListItemComponent implements OnInit {
     })
 
     this.isLoading.emit(false)    
+  }
+
+  modifyProduct(id) {
+    this.isLoading.emit(true)
+
+    this.productsService.modifyProduct(id)
+    .subscribe(ps => {
+      this.loadedProducts.emit(ps);
+    })
+
+    this.isLoading.emit(false) 
   }
 
   ngOnInit() {

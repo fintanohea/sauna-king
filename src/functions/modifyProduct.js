@@ -18,34 +18,35 @@ exports.handler = (event, context, callback) => {
     .set({title: 'CHANGED TITLE'}) // Shallow merge
     .commit()
     .then(results => {
-        const products = results.map(x => {
-            const output = {
-              id: x._id,
-              name: x.title,
-              url: `${process.env.URL}/.netlify/functions/modifyProduct`,
-              price: x.defaultProductVariant.price,
-              description: x.blurb.en,
-              body: blocksToHtml({blocks: x.body.en}),
-            }
-      
-            const image = x.defaultProductVariant.images && x.defaultProductVariant.images.length > 0
-              ? x.defaultProductVariant.images[0].asset._ref
-              : null;
-      
-            if (image) {
-              output.image = imageUrlBuilder(sanity).image(image).size(300, 300).fit('fillmax').url();
-            }
-      
-            return output;
-        })
+        console.log(results.title)
+        const output = {
+            id: results._id,
+            name: results.title,
+            url: `${process.env.URL}/.netlify/functions/modifyProduct`,
+            price: results.defaultProductVariant.price,
+            description: results.blurb.en,
+            body: blocksToHtml({blocks: results.body.en}),
+          }
+
+        const image = results.defaultProductVariant.images && results.defaultProductVariant.images.length > 0
+            ? results.defaultProductVariant.images[0].asset._ref
+            : null
+  
+        if (image) {
+            output.image = imageUrlBuilder(sanity).image(image).size(300, 300).fit('fillmax').url()
+        }
+
+        const products = [
+            output
+        ]
 
         callback(null, {
-            statusCode: 200,
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(products),
-        })
+                    statusCode: 200,
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(products),
+                })
     })
     .catch(err => {
         console.error('Oh no, the update failed: ', err.message)
