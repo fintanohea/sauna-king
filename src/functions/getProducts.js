@@ -14,9 +14,8 @@ exports.handler = (event, context, callback) => {
   const query = '*[_type=="product"] | order(title asc)';
   sanity.fetch(query).then(results => {
     const products = results.map(x => {
-        console.log(x.blurb)
       const output = {
-        id: x.slug.current,
+        id: x._id,
         name: x.title,
         url: `${process.env.URL}/.netlify/functions/getProducts`,
         price: x.defaultProductVariant.price,
