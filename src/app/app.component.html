@@ -1,15 +1,40 @@
 <div>
-  <nav class="nav">
-    <a href="/"><img class="nav__logo" src="assets/png/logo.png" alt="Keyway" width="190px"/></a>
-    <button class="snipcart-checkout">
-      View cart
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary flex-nowrap">
+    <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
     </button>
+    <span class="navbar-brand w-100">
+      <a routerLink="/"><img class="nav__logo" src="assets/png/SKLOGO1.jpg" alt="Sauna King Logo" width="100px"/></a>
+    </span>
+    <div class="navbar-collapse collapse w-100 justify-content-center" id="navbar">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/about">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Saunas</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Accessories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+    </div>
+    <div class="w-100"><!--spacer--></div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+          <a class="nav-link snipcart-checkout">View Cart</a>
+      </li>
+    </ul>
   </nav>
 
   <router-outlet></router-outlet>
 
 
   <footer class="footer">
-    <p>Made with ❤ by Snipcart with Angular, Sanity and Netlify. See the <a class="link--external" href="https://github.com/snipcart/snipcart-keyway">Github repo</a> and <a class="link--external" href="https://snipcart.com/blog/headless-angular-ecommerce-app">tutorial</a>.</p>
+    <p>Made with ❤</p>
   </footer>
 </div>
