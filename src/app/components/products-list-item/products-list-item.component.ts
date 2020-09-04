@@ -19,7 +19,7 @@ export class ProductsListItemComponent implements OnInit {
 
     this.productsService.getProduct(id)
     .subscribe(ps => {
-      this.loadedProducts.emit(ps);
+      this.loadedProducts.emit([ps]);
     })
 
     this.isLoading.emit(false)    

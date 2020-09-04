@@ -17,33 +17,33 @@ exports.handler = (event, context, callback) => {
     const params = {id: productId}
 
     sanity.fetch(query, params).then(results => {
-        const products = results.map(x => {
-            const output = {
-              id: x._id,
-              name: x.title,
-              url: `${process.env.URL}/.netlify/functions/getProduct`,
-              price: x.defaultProductVariant.price,
-              description: x.blurb.en,
-              body: blocksToHtml({blocks: x.body.en}),
-            }
-      
-            const image = x.defaultProductVariant.images && x.defaultProductVariant.images.length > 0
-              ? x.defaultProductVariant.images[0].asset._ref
-              : null;
-      
-            if (image) {
-              output.image = imageUrlBuilder(sanity).image(image).size(300, 300).fit('fillmax').url();
-            }
-      
-            return output;
-        })
+      const products = results.map(x => {
+          const output = {
+            id: x._id,
+            name: x.title,
+            url: `${process.env.URL}/.netlify/functions/getProduct?id=${x._id}`,
+            price: x.defaultProductVariant.price,
+            description: x.blurb.en,
+            body: blocksToHtml({blocks: x.body.en}),
+          }
+    
+          const image = x.defaultProductVariant.images && x.defaultProductVariant.images.length > 0
+            ? x.defaultProductVariant.images[0].asset._ref
+            : null;
+    
+          if (image) {
+            output.image = imageUrlBuilder(sanity).image(image).size(300, 300).fit('fillmax').url();
+          }
+    
+          return output;
+      })
 
-        callback(null, {
-            statusCode: 200,
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(products),
-        })
-    })
+      callback(null, {
+          statusCode: 200,
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(products[0]),
+      })
+  })
 }
