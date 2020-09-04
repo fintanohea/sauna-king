@@ -17,8 +17,8 @@ export class ProductsService {
     });
   }
 
-  getProduct(id): Observable<Product[]> {
-    return this.http.get<Product[]>('/.netlify/functions/getProduct', {
+  getProduct(id): Observable<Product> {
+    return this.http.get<Product>('/.netlify/functions/getProduct', {
       headers: {
         'Content-Type': 'application/json'
       },
