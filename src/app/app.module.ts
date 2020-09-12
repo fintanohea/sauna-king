@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsListItemComponent } from './components/products-list-item/products-list-item.component';
 import { AboutComponent } from './components/about/about.component';
+import { SteamcubeProductComponent } from './components/steamcube-product/steamcube-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -14,12 +20,18 @@ import { AboutComponent } from './components/about/about.component';
     AppComponent,
     ProductsListComponent,
     ProductsListItemComponent,
-    AboutComponent
+    AboutComponent,
+    SteamcubeProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatListModule,
+    MatDividerModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
