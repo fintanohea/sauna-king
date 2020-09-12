@@ -28,6 +28,17 @@ export class ProductsService {
     });
   }
 
+  getProductByTitle(title): Observable<Product> {
+    return this.http.get<Product>('/.netlify/functions/getProductByTitle', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      params: {
+        'title': title
+      }
+    });
+  }
+
   modifyProduct(id): Observable<Product[]> {
     return this.http.get<Product[]>('/.netlify/functions/modifyProduct', {
       headers: {
