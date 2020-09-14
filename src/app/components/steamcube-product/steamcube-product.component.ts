@@ -10,13 +10,17 @@ import { Product } from 'src/app/models/Product';
 
 export class SteamcubeProductComponent implements OnInit {
   product: Product
+  loading = false
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
+    this.loading = true
+
     this.productsService.getProductByTitle("Steamcube")
     .subscribe(p => {
       this.product = p
+      this.loading = false
     })
   }
 
