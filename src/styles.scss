@@ -18,5 +18,54 @@
 @import './sass/site/product';
 @import './sass/site/footer';
 
+@font-face {
+    font-family: fuji-bold;
+    src: url(assets/fonts/Fuji-Bold.otf) format("opentype");
+}
+@font-face {
+    font-family: fuji-light;
+    src: url(assets/fonts/Fuji-Light.otf) format("opentype");
+}
+@font-face {
+    font-family: neueMontreal-bold;
+    src: url(assets/fonts/NeueMontreal-Bold.otf) format("opentype");
+}
+@font-face {
+    font-family: neueMontreal-boldItalic;
+    src: url(assets/fonts/NeueMontreal-BoldItalic.otf) format("opentype");
+}
+@font-face {
+    font-family: neueMontreal-light;
+    src: url(assets/fonts/NeueMontreal-Light.otf) format("opentype");
+}
+@font-face {
+    font-family: neueMontreal-lightItalic;
+    src: url(assets/fonts/NeueMontreal-LightItalic.otf) format("opentype");
+}
+
+$white: #ececeb;
+$lightGrey: #d0d1d1;
+$grey: #958d8c;
+$lightBlue: #6295b9;
+$darkGreen: #13311b;
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: neueMontreal-light; 
+    background-color: $white !important;
+
+    h1 h2 h3 h4 h5 {
+        font-family: fuji-bold; 
+    }
+
+    .navbar {
+        background-color: $lightGrey !important;
+
+        a {
+            font-family: fuji-bold; 
+            color: $white;
+        }
+    }
+}
