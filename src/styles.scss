@@ -63,12 +63,11 @@ body {
 
     .navbar {
         background-color: $lightGrey !important;
-
         box-shadow: none;
 
         a {
             font-family: fuji-bold; 
-            color: $white;
+            color: $black;
         }
     }
 }
