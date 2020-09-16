@@ -1,0 +1,98 @@
+@import 'src/styles.scss';
+
+.contact-component {
+   .contact-text {
+        height: 90vh;
+        position: relative;
+        div {
+            padding: 2%;
+        }
+
+        .title {
+            font-family: fuji-bold;
+            color: $black;
+            font-size: 6vw;
+        }
+
+        .content {
+            font-family: neueMontreal-light;
+            font-size: 3vh;
+
+            .form-container {
+                font-size: 20px;
+
+                .form-field{
+                    width: 100%;
+                }
+            }
+        }
+
+        .form-group{
+            padding-bottom: 0%;
+            padding-top: 0%;
+        } 
+
+      /* Buttons styles start */
+        button {
+            display: inline-block;
+            border: none;
+            border-radius: .2rem;
+            padding: 1rem 2rem;
+            margin: 0;
+            text-decoration: none;
+            background: $lightBlue;
+            color: #ffffff;
+            font-family: neueMontreal-light;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            text-align: center;
+            transition: background 250ms ease-in-out, transform 150ms ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        button:hover,
+        button:focus {
+            background: #0053ba;
+        }
+
+        button:focus {
+            outline: 1px solid #fff;
+            outline-offset: -4px;
+        }
+
+        button:active {
+            transform: scale(0.99);
+        }
+
+        button:disabled {
+            background: $lightGrey;
+        }
+        /* Button styles end */
+    }
+
+    .contact-img {
+        height: 90vh;
+        img {
+            height: auto;
+            width: 60%;
+        }
+    }
+}
+
+// Mobile
+@media (max-width: 767px) {
+   .contact-component {
+      .contact-text {
+         .title {
+         font-size: 12vw;
+         }
+      }
+   }
+}
+
+@media (min-width: 768px) {
+}
+ 

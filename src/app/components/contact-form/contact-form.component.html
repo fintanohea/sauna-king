@@ -1,0 +1,74 @@
+<div class="contact-component container-fluid">
+  <div class="row">
+      <div class="col-md-7 contact-text d-flex align-items-end flex-column">
+          <div class="title mb-auto">
+              CONTACT US 
+          </div>
+          <div class="content mt-auto">
+              <div class="text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+
+              <div class="form-container">
+                <form [formGroup]="contactForm" (submit)="submit()">
+      
+                  <div class="form-group">
+                    <mat-form-field class="form-field" appearance="outline">
+                      <mat-label> Name
+                      </mat-label>
+                      <input matInput formControlName="name" required>
+                      <mat-error *ngIf="contactForm.controls.name.touched && contactForm.controls.name.invalid">
+                        <span *ngIf="contactForm.controls.name.errors.required">This field is mandatory.</span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-group">
+                    <mat-form-field class="form-field" appearance="outline">
+                      <mat-label> E-mail
+                      </mat-label>
+                      <input matInput formControlName="email" required>
+                      <mat-error *ngIf="contactForm.controls.email.touched && contactForm.controls.email.invalid">
+                        <span *ngIf="contactForm.controls.email.errors.required">This field is mandatory.</span>
+                        <span *ngIf="contactForm.controls.email.errors.pattern">This field is invalid.</span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-group">
+                    <mat-form-field class="form-field" appearance="outline">
+                      <mat-label> Message
+                      </mat-label>
+                      <textarea matInput formControlName="message"></textarea>
+                      <mat-error *ngIf="contactForm.controls.message.touched && contactForm.controls.message.invalid">
+                        <span *ngIf="contactForm.controls.message.errors.required">This field is mandatory.</span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-group">
+                    <button 
+                      mat-raised-button 
+                      color="primary" 
+                      type="submit"
+                      [disabled]="submittingForm">
+                      Submit
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+          
+          </div>
+      </div>
+      <div class="col-md-5 p-2 contact-img d-flex justify-content-center align-items-center">
+
+        <img src="/assets/img/portrait-woman-office-with-tablet.jpg" class="img-fluid" alt="...">
+
+      </div>
+  </div>
+</div>
+  
+  
+  
+  
