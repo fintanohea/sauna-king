@@ -49,6 +49,7 @@ $grey: #958d8c;
 $lightBlue: #6295b9;
 $darkGreen: #13311b;
 $black: #2f2f2f;
+$red: #eb503b;
 
 html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -71,3 +72,20 @@ body {
         }
     }
 }
+
+.blue-snackbar {
+    background: $lightBlue;
+    color: #ffffff;
+    font-family: neueMontreal-light;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.red-snackbar {
+    background: $red;
+    color: #ffffff;
+    font-family: neueMontreal-light;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
