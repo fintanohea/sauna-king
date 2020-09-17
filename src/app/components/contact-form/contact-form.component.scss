@@ -4,8 +4,10 @@
    .contact-text {
         height: 90vh;
         position: relative;
-        div {
-            padding: 2%;
+        padding: 2%;
+
+        .text {
+            width: 100%;
         }
 
         .title {
@@ -16,7 +18,7 @@
 
         .content {
             font-family: neueMontreal-light;
-            font-size: 3vh;
+            font-size: 1.6vw;
 
             .form-container {
                 font-size: 20px;
@@ -87,7 +89,11 @@
    .contact-component {
       .contact-text {
          .title {
-         font-size: 12vw;
+            font-size: 12vw;
+         }
+
+         .content {
+            font-size: 5vw;
          }
       }
    }

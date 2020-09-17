@@ -34,27 +34,29 @@ export class ContactFormSubmissionService {
                   
     return http$.pipe(
       tap(res => {
-        res.confirmation === 'fail' ? 
-          this.showNotification(res.message.message) : 
-          this.showNotification(res.message);
+        res.confirmation === 'fail' 
+          ? this.showNotification(res.message.message, AppConstants.redSnackBar) 
+          : this.showNotification(res.message, AppConstants.blueSnackBar);
       }),
       catchError(err => {
         if(err.error.errors) {
           err.error.errors.forEach(e => {
-            this.showNotification(e.msg);
+            this.showNotification(e.msg, AppConstants.redSnackBar);
           });
         }
-        err.statusText ? this.showNotification(err.statusText) : this.showNotification('Unknown Error');
+        err.statusText 
+          ? this.showNotification(err.statusText, AppConstants.redSnackBar) 
+          : this.showNotification('Unknown Error', AppConstants.redSnackBar);
         
         return throwError(err);
       })
     );     
   }
 
-  showNotification(text: string) {
+  showNotification(text: string, style: string) {
     this.snackBar.open(text, null, {
       duration: 2000,
-      panelClass: ['blue-snackbar'],
+      panelClass: [style],
       horizontalPosition: 'end'
     });
   }
