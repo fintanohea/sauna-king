@@ -127,3 +127,19 @@
 
 }
 
+
+// Mobile
+@media (max-width: 767px) {
+    .text-div {
+        width: 100% !important;
+
+        &.left {
+            margin-left: 0px !important;
+        }
+
+        &.right {
+            margin-right: 0px !important;
+        }
+    }
+ }
+
