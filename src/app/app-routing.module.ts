@@ -4,10 +4,11 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { AboutComponent } from './components/about/about.component';
 import { SteamcubeProductComponent } from './components/steamcube-product/steamcube-product.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [{
   path: '',
-  component: ProductsListComponent,
+  component: HomepageComponent,
 },
 {
   path: 'about',
@@ -20,6 +21,10 @@ const routes: Routes = [{
 {
   path: 'contact',
   component: ContactFormComponent,
+},
+{
+  path: 'store',
+  component: ProductsListComponent,
 }];
 
 @NgModule({

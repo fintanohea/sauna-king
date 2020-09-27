@@ -19,7 +19,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ProductsListItemComponent,
     AboutComponent,
     SteamcubeProductComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
