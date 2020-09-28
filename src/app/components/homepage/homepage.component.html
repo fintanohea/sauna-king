@@ -19,7 +19,7 @@
                         [src]="item.image!= null ? item.img : item.images[0]"
                         alt="{{item.name}} product image">
                     <div class="overlay">
-                        <button>
+                        <button routerLink="/product/{{item.id}}" >
                             View Product
                         </button>
                     </div>

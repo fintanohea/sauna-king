@@ -27,15 +27,12 @@ exports.handler = (event, context, callback) => {
             body: blocksToHtml({blocks: x.body.en}),
           }
     
-          
-
           let images = []
 
           if (x.defaultProductVariant.images.length > 1) {
             x.defaultProductVariant.images.map( img => {
               images.push(imageUrlBuilder(sanity).image(img).size(300, 300).fit('fillmax').url())
             })
-            console.log(images)
 
             output.images = images
           }
@@ -49,7 +46,6 @@ exports.handler = (event, context, callback) => {
             }
           }
     
-          console.log(output)
           return output
       })
 

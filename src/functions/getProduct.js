@@ -26,13 +26,24 @@ exports.handler = (event, context, callback) => {
             description: x.blurb.en,
             body: blocksToHtml({blocks: x.body.en}),
           }
-    
-          const image = x.defaultProductVariant.images && x.defaultProductVariant.images.length > 0
+
+          let images = []
+
+          if (x.defaultProductVariant.images.length > 1) {
+            x.defaultProductVariant.images.map( img => {
+              images.push(imageUrlBuilder(sanity).image(img).size(300, 300).fit('fillmax').url())
+            })
+
+            output.images = images
+          }
+          else {
+            const image = x.defaultProductVariant.images && x.defaultProductVariant.images.length > 0
             ? x.defaultProductVariant.images[0].asset._ref
-            : null;
-    
-          if (image) {
-            output.image = imageUrlBuilder(sanity).image(image).size(300, 300).fit('fillmax').url();
+            : null
+
+            if (image) {
+              output.image = imageUrlBuilder(sanity).image(image).size(300, 300).fit('fillmax').url()
+            }
           }
     
           return output;

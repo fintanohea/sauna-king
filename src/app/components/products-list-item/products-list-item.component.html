@@ -14,15 +14,16 @@
     </button>
 
     <button 
-      class="button"
-      (click)="getProduct(product.id)">
-      Get Product
+      mat-raised-button 
+      color="primary" 
+      routerLink="/product/{{product.id}}">
+      View Product
     </button>
 
-    <button 
+    <!-- <button 
       class="button"
       (click)="modifyProduct(product.id)">
       Modify Product
-    </button>
+    </button> -->
   </figcaption>
 </figure>

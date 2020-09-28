@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     AboutComponent,
     SteamcubeProductComponent,
     ContactFormComponent,
-    HomepageComponent
+    HomepageComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
