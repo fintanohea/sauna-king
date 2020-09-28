@@ -18,7 +18,6 @@ exports.handler = (event, context, callback) => {
     .set({title: 'CHANGED TITLE'}) // Shallow merge
     .commit()
     .then(results => {
-        console.log(results.title)
         const output = {
             id: results._id,
             name: results.title,

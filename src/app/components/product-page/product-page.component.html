@@ -1,0 +1,134 @@
+<div class="container" *ngIf="!loading; else loadingBlock">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item"
+                    *ngFor="let img of product.images; let isFirst = first" 
+                    [class.active]="isFirst">
+
+                    <img class="d-block w-100" src={{img}}>
+
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title>{{ product.name }}</mat-card-title>
+                  <mat-card-subtitle>${{ product.price }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    {{ product.description }}
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="button button--buy snipcart-add-item"
+                        [attr.data-item-url]="product.url"
+                        [attr.data-item-id]="product.id"
+                        [attr.data-item-price]="product.price"
+                        [attr.data-item-description]="product.description"
+                        [attr.data-item-image]="product.image"
+                        [attr.data-item-name]="product.name">
+                        Add to cart
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            
+
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Watch video
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                
+                
+                </mat-expansion-panel>
+                
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Health Benefits
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                
+                    <mat-list>
+                        <h1>Benefits of using the sauna include the reduced risk of:</h1>
+                        <mat-list-item matSubheader> Sudden cardiac death </mat-list-item>
+                        <mat-list-item matSubheader> Cardiovascular-related mortality </mat-list-item>
+                        <mat-list-item matSubheader> Coronary heart disease-related death </mat-list-item>
+                        <mat-list-item matSubheader> Stroke </mat-list-item>
+                        <mat-list-item matSubheader> Hypertension </mat-list-item>
+                        <mat-list-item matSubheader> All-cause mortality </mat-list-item>
+                    </mat-list>
+
+                    <mat-list>
+                        <h1>Using the sauna is the best way to increase the body’s production of heat shock proteins:</h1>
+                        <mat-list-item matSubheader> Sitting in a 163 °F sauna for 30 minutes increases heat shock protein levels by ~50% </mat-list-item>
+                        <mat-list-item matSubheader> The most important thing heat shock proteins do: help maintain the proper 3-dimensional structure of cellular proteins </mat-list-item>
+                        <mat-list-item matSubheader> Heat shock proteins also slow muscular atrophy (the wasting away of muscle) </mat-list-item>
+                    </mat-list>
+                    
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Why choose the Steamcube
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                
+                    <mat-list>
+                        <mat-list-item> Most energy efficient Sauna on the market. </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item> Constructed within 30 minutes with only an Allen Key. </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item> No need to pour a concrete foundation. </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item> Can be placed inside or outside. </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item> Marine grade insulation. </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item> Portable. </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item> Tried and tested over 40 years of production. </mat-list-item>
+                        <mat-divider></mat-divider>
+                    </mat-list>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #loadingBlock>
+    <main class="catalog catalog--loading">
+        <span class="catalog__loading">
+            <mat-spinner></mat-spinner>
+        </span>
+    </main>
+</ng-template>
