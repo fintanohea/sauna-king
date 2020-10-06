@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ContactFormSubmissionServiceService } from './contact-form-submission-service.service';
+import { ContactFormSubmissionService } from './contact-form-submission-service.service';
 
-describe('ContactFormSubmissionServiceService', () => {
-  let service: ContactFormSubmissionServiceService;
+describe('ContactFormSubmissionService', () => {
+  let service: ContactFormSubmissionService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ContactFormSubmissionServiceService);
+    service = TestBed.inject(ContactFormSubmissionService);
   });
 
   it('should be created', () => {
