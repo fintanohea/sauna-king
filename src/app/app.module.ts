@@ -21,6 +21,7 @@ import { SteamcubeProductComponent } from './components/steamcube-product/steamc
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     SteamcubeProductComponent,
     ContactFormComponent,
     HomepageComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

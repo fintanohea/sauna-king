@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { MatSnackBar } from '@angular/material/snack-bar'
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -20,7 +19,6 @@ export class ContactFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar,
     private contactFormSubmissionService: ContactFormSubmissionService
   ) { }
 
@@ -58,9 +56,6 @@ export class ContactFormComponent implements OnInit {
         res => console.log('HTTP Response', res),
         err => console.log('HTTP Error', err),
         () =>  this.submittingForm = false
-
       )
-
   }
-
 }
