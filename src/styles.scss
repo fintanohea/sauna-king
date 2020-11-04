@@ -43,7 +43,8 @@
     src: url(/assets/fonts/NeueMontreal-LightItalic.otf) format("opentype");
 }
 
-$white: #ececeb;
+// $white: #ececeb;
+$white: #fff;
 $lightGrey: #d0d1d1;
 $grey: #958d8c;
 $lightBlue: #6295b9;
@@ -69,6 +70,10 @@ body {
         a {
             font-family: fuji-bold; 
             color: $black;
+        }
+
+        .nav-link {
+            color: rgba(0,0,0,.8) !important;
         }
     }
 }
