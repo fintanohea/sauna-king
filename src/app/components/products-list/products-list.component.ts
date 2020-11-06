@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ProductsService } from 'src/app/services/products-service/products.service'
 import { Product } from 'src/app/models/Product'
+import { Category } from 'src/app/models/Category'
 
 @Component({
   selector: 'app-products-list',
@@ -8,6 +9,7 @@ import { Product } from 'src/app/models/Product'
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
+  categories: Category[]
   products: Product[] = []
   loading = false
 
@@ -21,6 +23,11 @@ export class ProductsListComponent implements OnInit {
         this.loading = false
         this.products = products
       })
+
+    this.productsService.getCategories()
+      .subscribe(categories => {
+        this.categories = categories
+      })
   }
 
   isLoadingFromProduct(isLoading: boolean) {
@@ -29,5 +36,15 @@ export class ProductsListComponent implements OnInit {
 
   loadedProducts(loadedProducts: Product[]) {
     this.products = loadedProducts
+  }
+
+  getProductsByCategory(category: string){
+    this.loading = true
+
+    this.productsService.getProductsByCategory(category)
+      .subscribe(products => {
+        this.loading = false
+        this.products = products
+      })
   }
 }

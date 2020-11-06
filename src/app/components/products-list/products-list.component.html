@@ -1,3 +1,9 @@
+<button
+  *ngFor="let category of categories"
+  (click)="getProductsByCategory(category.id)">
+  {{ category.name }}
+</button>
+
 <main class="catalog" *ngIf="!loading; else loadingBlock">
     <app-products-list-item
       class="catalog__product"
