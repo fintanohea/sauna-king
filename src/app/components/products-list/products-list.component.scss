@@ -1,1 +1,16 @@
+@import 'src/styles.scss';
 
+.categories-nav-menu {
+    background-color: $black;
+
+    li {
+        cursor: pointer;
+        color: $white;
+
+        &.active {
+            background-color: $black;
+            border-bottom-style: solid;
+            border-bottom-color: $white;
+        }
+    }
+}

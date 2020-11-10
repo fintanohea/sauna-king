@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../models/Product';
+import { Category } from '../../models/Category';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -35,6 +36,25 @@ export class ProductsService {
       },
       params: {
         'title': title
+      }
+    });
+  }
+
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>('/.netlify/functions/getCategories', {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  getProductsByCategory(category): Observable<Product[]> {
+    return this.http.get<Product[]>('/.netlify/functions/getProductsByCategory', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      params: {
+        'category': category
       }
     });
   }

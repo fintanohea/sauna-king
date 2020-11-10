@@ -1,3 +1,19 @@
+<ul class="categories-nav-menu list-group flex-md-row justify-content-center">
+  <li 
+    [ngClass]="{'active': selectedNav == 'all'}"
+    class="p-4 list-group-item"
+    (click)="getAllProducts(); setActive('all')">
+    All
+  </li>
+  <li
+    [ngClass]="{'active': selectedNav == category.name}" 
+    class="p-4 list-group-item"
+    *ngFor="let category of categories"
+    (click)="getProductsByCategory(category.id); setActive(category.name)">
+    {{ category.name }}
+  </li>
+</ul>
+
 <main class="catalog" *ngIf="!loading; else loadingBlock">
     <app-products-list-item
       class="catalog__product"
@@ -16,3 +32,4 @@
     </span>
   </main>
 </ng-template>
+
