@@ -12,10 +12,19 @@ export class ProductsListComponent implements OnInit {
   categories: Category[]
   products: Product[] = []
   loading = false
+  selectedNav: string = 'all';
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
+    this.loading = true
+
+    this.getAllProducts()
+
+    this.getAllCategories()
+  }
+
+  getAllProducts() {
     this.loading = true
 
     this.productsService.getAllProducts()
@@ -23,7 +32,9 @@ export class ProductsListComponent implements OnInit {
         this.loading = false
         this.products = products
       })
+  }
 
+  getAllCategories() {
     this.productsService.getCategories()
       .subscribe(categories => {
         this.categories = categories
@@ -46,5 +57,9 @@ export class ProductsListComponent implements OnInit {
         this.loading = false
         this.products = products
       })
+  }
+
+  setActive(link: string){
+    this.selectedNav = link
   }
 }
