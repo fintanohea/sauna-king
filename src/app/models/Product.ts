@@ -6,6 +6,7 @@ export interface Product {
   image: string;
   images: [string];
   description?: string;
+  body?: string;
   dimensions?: ProductDimensions;
 }
 

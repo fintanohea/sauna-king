@@ -22,19 +22,14 @@
             </div>
         </div>
         <div class="col-md-6">
-
-            <mat-card class="example-card">
-                <mat-card-header>
-                  <mat-card-title>{{ product.name }}</mat-card-title>
-                  <mat-card-subtitle>${{ product.price }}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                  <p>
-                    {{ product.description }}
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button class="button button--buy snipcart-add-item"
+            <h2 class="product-title font-weight-bold">
+                {{ product.name }}
+            </h2>
+            <div class="product-price font-weight-bold mb-2">
+                ${{ product.price }}
+            </div>
+            <div class="product-action-buttons mb-4">
+                <button class="button button--buy snipcart-add-item default-button small"
                         [attr.data-item-url]="product.url"
                         [attr.data-item-id]="product.id"
                         [attr.data-item-price]="product.price"
@@ -43,83 +38,10 @@
                         [attr.data-item-name]="product.name">
                         Add to cart
                     </button>
-                </mat-card-actions>
-            </mat-card>
-            
-
-            <mat-accordion class="example-headers-align" multi>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Watch video
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                
-                
-                </mat-expansion-panel>
-                
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Health Benefits
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                
-                    <mat-list>
-                        <h1>Benefits of using the sauna include the reduced risk of:</h1>
-                        <mat-list-item matSubheader> Sudden cardiac death </mat-list-item>
-                        <mat-list-item matSubheader> Cardiovascular-related mortality </mat-list-item>
-                        <mat-list-item matSubheader> Coronary heart disease-related death </mat-list-item>
-                        <mat-list-item matSubheader> Stroke </mat-list-item>
-                        <mat-list-item matSubheader> Hypertension </mat-list-item>
-                        <mat-list-item matSubheader> All-cause mortality </mat-list-item>
-                    </mat-list>
-
-                    <mat-list>
-                        <h1>Using the sauna is the best way to increase the body’s production of heat shock proteins:</h1>
-                        <mat-list-item matSubheader> Sitting in a 163 °F sauna for 30 minutes increases heat shock protein levels by ~50% </mat-list-item>
-                        <mat-list-item matSubheader> The most important thing heat shock proteins do: help maintain the proper 3-dimensional structure of cellular proteins </mat-list-item>
-                        <mat-list-item matSubheader> Heat shock proteins also slow muscular atrophy (the wasting away of muscle) </mat-list-item>
-                    </mat-list>
-                    
-
-                </mat-expansion-panel>
-
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Why choose the Steamcube
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                
-                    <mat-list>
-                        <mat-list-item> Most energy efficient Sauna on the market. </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item> Constructed within 30 minutes with only an Allen Key. </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item> No need to pour a concrete foundation. </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item> Can be placed inside or outside. </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item> Marine grade insulation. </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item> Portable. </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item> Tried and tested over 40 years of production. </mat-list-item>
-                        <mat-divider></mat-divider>
-                    </mat-list>
-
-                </mat-expansion-panel>
-            </mat-accordion>
+            </div>
+            <div class="product-description"
+                [innerHTML]=product.body>
+            </div>
         </div>
     </div>
 </div>

@@ -31,7 +31,7 @@ exports.handler = (event, context, callback) => {
 
           if (x.defaultProductVariant.images.length > 1) {
             x.defaultProductVariant.images.map( img => {
-              images.push(imageUrlBuilder(sanity).image(img).size(300, 300).fit('fillmax').url())
+              images.push(imageUrlBuilder(sanity).image(img).size(900, 900).fit('fillmax').url())
             })
 
             output.images = images
@@ -42,8 +42,10 @@ exports.handler = (event, context, callback) => {
             : null
 
             if (image) {
-              output.image = imageUrlBuilder(sanity).image(image).size(300, 300).fit('fillmax').url()
+              images.push(imageUrlBuilder(sanity).image(image).size(900, 900).fit('fillmax').url())
             }
+
+            output.images = images
           }
     
           return output;

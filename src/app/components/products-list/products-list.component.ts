@@ -11,13 +11,14 @@ import { Category } from 'src/app/models/Category'
 export class ProductsListComponent implements OnInit {
   categories: Category[]
   products: Product[] = []
-  loading = false
+  loadingProducts = false
+  loadingCatagories = false
   selectedNav: string = 'all';
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.loading = true
+    this.loadingProducts = true
 
     this.getAllProducts()
 
@@ -25,24 +26,27 @@ export class ProductsListComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.loading = true
+    this.loadingProducts = true
 
     this.productsService.getAllProducts()
       .subscribe(products => {
-        this.loading = false
+        this.loadingProducts = false
         this.products = products
       })
   }
 
   getAllCategories() {
+    this.loadingCatagories = true
+
     this.productsService.getCategories()
       .subscribe(categories => {
+        this.loadingCatagories = false
         this.categories = categories
       })
   }
 
   isLoadingFromProduct(isLoading: boolean) {
-    this.loading = isLoading
+    this.loadingProducts = isLoading
   }
 
   loadedProducts(loadedProducts: Product[]) {
@@ -50,11 +54,11 @@ export class ProductsListComponent implements OnInit {
   }
 
   getProductsByCategory(category: string){
-    this.loading = true
+    this.loadingProducts = true
 
     this.productsService.getProductsByCategory(category)
       .subscribe(products => {
-        this.loading = false
+        this.loadingProducts = false
         this.products = products
       })
   }
