@@ -16,7 +16,7 @@
                 </mat-card-header>
                 <div class="img-container">
                     <img mat-card-image 
-                        [src]="item.image!= null ? item.img : item.images[0]"
+                        [src]="item.image"
                         alt="{{item.name}} product image">
                     <div class="overlay">
                         <button routerLink="/product/{{item.id}}" >
@@ -30,7 +30,7 @@
                         {{item.name}}
                     </p>
                     <p class="description">
-                        {{item.description}}
+                        <!-- {{item.description}} -->
                     </p>
                     <p class="price">
                         ${{item.price}}
@@ -38,12 +38,12 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <button class="button button--buy snipcart-add-item default-button"
-                        [attr.data-item-url]="product.url"
-                        [attr.data-item-id]="product.id"
-                        [attr.data-item-price]="product.price"
-                        [attr.data-item-description]="product.description"
-                        [attr.data-item-image]="product.image"
-                        [attr.data-item-name]="product.name">
+                        [attr.data-item-url]="item.url"
+                        [attr.data-item-id]="item.id"
+                        [attr.data-item-price]="item.price"
+                        [attr.data-item-description]="item.description"
+                        [attr.data-item-image]="item.image"
+                        [attr.data-item-name]="item.name">
                         Add to cart
                     </button>
                 </mat-card-actions>

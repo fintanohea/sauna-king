@@ -10,7 +10,7 @@ import { Product } from 'src/app/models/Product';
 })
 export class HomepageComponent implements OnInit {
   product: Product
-  items: Array<Product>
+  items: Array<Product> = []
   loading = false
 
   constructor(private productsService: ProductsService) { }
@@ -18,11 +18,12 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true
 
-    this.productsService.getProductByTitle("Steamcube")
-    .subscribe(p => {
-      this.product = p
+    this.productsService.getAllProducts('0','5')
+    .subscribe(ps => {
+      ps.forEach( p => {
+        this.items.push(p)
+      })
       this.loading = false
-      this.items = [this.product, this.product, this.product, this.product, this.product]
     })
   }
 

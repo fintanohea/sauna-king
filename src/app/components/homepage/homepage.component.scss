@@ -24,6 +24,8 @@
                     img {
                         margin-left: auto;
                         margin-right: auto;
+                        height: 250px;
+                        width: auto;
                     }
         
                     .overlay {
@@ -69,7 +71,7 @@
     }   
 
     .text-box {
-        height: 65vh;
+        min-height: 65vh;
         background-repeat: no-repeat;
         background-size: center center;
         position: relative;

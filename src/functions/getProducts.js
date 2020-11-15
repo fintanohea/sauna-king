@@ -11,7 +11,16 @@ const sanity = sanityClient({
 });
 
 exports.handler = (event, context, callback) => {
-  const query = '*[_type=="product"] | order(title asc)';
+  const start = event.queryStringParameters.start
+  const end = event.queryStringParameters.end
+
+
+  let query = '*[_type=="product"]';
+  if(start !== 'undefined' && end !== 'undefined'){
+    query = query + `[${start}...${end}]`
+  }
+  query = query + ' | order(title asc)'
+
   sanity.fetch(query).then(results => {
     const products = results.map(x => {
       const output = {
