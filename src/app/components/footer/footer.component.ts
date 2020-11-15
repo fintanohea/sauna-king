@@ -29,7 +29,6 @@ export class FooterComponent implements OnInit {
   }
 
   submit() {
-    console.log("here")
     if (!this.emailListForm.valid) {
       return;
     }

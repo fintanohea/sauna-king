@@ -10,15 +10,19 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsService {
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<Product[]> {
+  getAllProducts(start?: string, end?: string): Observable<Product[]> {
     return this.http.get<Product[]>('/.netlify/functions/getProducts', {
       headers: {
         'Content-Type': 'application/json'
       },
+      params: {
+        'start': start,
+        'end': end
+      }
     });
   }
 
-  getProduct(id): Observable<Product> {
+  getProduct(id: string): Observable<Product> {
     return this.http.get<Product>('/.netlify/functions/getProduct', {
       headers: {
         'Content-Type': 'application/json'
@@ -29,7 +33,7 @@ export class ProductsService {
     });
   }
 
-  getProductByTitle(title): Observable<Product> {
+  getProductByTitle(title: string): Observable<Product> {
     return this.http.get<Product>('/.netlify/functions/getProductByTitle', {
       headers: {
         'Content-Type': 'application/json'
@@ -48,7 +52,7 @@ export class ProductsService {
     });
   }
 
-  getProductsByCategory(category): Observable<Product[]> {
+  getProductsByCategory(category: string): Observable<Product[]> {
     return this.http.get<Product[]>('/.netlify/functions/getProductsByCategory', {
       headers: {
         'Content-Type': 'application/json'
@@ -59,7 +63,7 @@ export class ProductsService {
     });
   }
 
-  modifyProduct(id): Observable<Product[]> {
+  modifyProduct(id: string): Observable<Product[]> {
     return this.http.get<Product[]>('/.netlify/functions/modifyProduct', {
       headers: {
         'Content-Type': 'application/json'
