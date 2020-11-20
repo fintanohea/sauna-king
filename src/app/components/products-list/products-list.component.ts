@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ProductsService } from 'src/app/services/products-service/products.service'
 import { Product } from 'src/app/models/Product'
 import { Category } from 'src/app/models/Category'
+import { Vendor } from 'src/app/models/Vendor'
 
 @Component({
   selector: 'app-products-list',
@@ -9,8 +10,9 @@ import { Category } from 'src/app/models/Category'
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-  categories: Category[]
+  categories: Category[] = []
   products: Product[] = []
+  vendors: Vendor[] = []
   loadingProducts = false
   loadingCatagories = false
   selectedNav: string = 'all';
@@ -43,6 +45,8 @@ export class ProductsListComponent implements OnInit {
         this.loadingCatagories = false
         this.categories = categories
       })
+
+    this.getVendors()  
   }
 
   isLoadingFromProduct(isLoading: boolean) {
@@ -53,7 +57,7 @@ export class ProductsListComponent implements OnInit {
     this.products = loadedProducts
   }
 
-  getProductsByCategory(category: string){
+  getProductsByCategory(category: string) {
     this.loadingProducts = true
 
     this.productsService.getProductsByCategory(category)
@@ -61,6 +65,16 @@ export class ProductsListComponent implements OnInit {
         this.loadingProducts = false
         this.products = products
       })
+
+    this.getVendors(category)  
+
+  }
+
+  getVendors(category?: string) {
+    this.productsService.getVendors(category)
+    .subscribe(vendors => {
+      this.vendors = vendors
+    })
   }
 
   setActive(link: string){

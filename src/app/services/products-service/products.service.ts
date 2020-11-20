@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../models/Product';
 import { Category } from '../../models/Category';
+import { Vendor } from '../../models/Vendor';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -48,6 +49,17 @@ export class ProductsService {
     return this.http.get<Category[]>('/.netlify/functions/getCategories', {
       headers: {
         'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  getVendors(category: string): Observable<Vendor[]> {
+    return this.http.get<Vendor[]>('/.netlify/functions/getVendors', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      params: {
+        'category': category
       }
     });
   }

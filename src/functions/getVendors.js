@@ -11,11 +11,19 @@ const sanity = sanityClient({
 
 exports.handler = (event, context, callback) => {
 
-    const query = '*[_type == "category"]'
-    const params = {}
+    const category = event.queryStringParameters.category
+    let params = {}
+    let query = '*[_type == "vendor"'
+
+    if(category !== undefined){
+        query = query + ' && categories[]._ref == $category'
+        params = {category: category}
+      }
+    query = query + ']'  
 
     sanity.fetch(query, params).then(results => {
-      const categories = results.map(x => {
+      const vendors = results.map(x => {
+          console.log(x)
         const output = {
             id: x._id,
             name: x.title
@@ -29,7 +37,7 @@ exports.handler = (event, context, callback) => {
           headers: {
           'Content-Type': 'application/json',
           },
-          body: JSON.stringify(categories),
+          body: JSON.stringify(vendors),
       })
   })
 }
