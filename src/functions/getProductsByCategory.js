@@ -13,7 +13,7 @@ const sanity = sanityClient({
 exports.handler = (event, context, callback) => {
 
     const category = event.queryStringParameters.category
-    const query = '*[_type == "product" && categories[0]._ref == $category]'
+    const query = '*[_type == "product" && categories[]._ref == $category]'
     const params = {category: category}
 
     sanity.fetch(query, params).then(results => {

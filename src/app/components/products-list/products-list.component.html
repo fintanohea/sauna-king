@@ -15,6 +15,18 @@
 </ul>
 
 <main class="catalog" *ngIf="!loadingProducts; else loadingBlock">
+  <mat-form-field appearance="fill">
+    <mat-label>Vendors</mat-label>
+    <mat-select>
+      <mat-option value="all">All</mat-option>
+      <mat-option
+        *ngFor="let vendor of vendors"
+        value="vendor.id">
+        {{ vendor.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
     <app-products-list-item
       class="catalog__product"
       *ngFor="let product of products"
