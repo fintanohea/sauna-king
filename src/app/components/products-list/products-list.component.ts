@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { MatSidenav } from '@angular/material/sidenav';
 import { ProductsService } from 'src/app/services/products-service/products.service'
 import { Product } from 'src/app/models/Product'
 import { Category } from 'src/app/models/Category'
@@ -16,6 +17,11 @@ export class ProductsListComponent implements OnInit {
   loadingProducts = false
   loadingCatagories = false
   selectedNav: string = 'all';
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
+  close() {
+    this.sidenav.close();
+  }
 
   constructor(private productsService: ProductsService) { }
 
