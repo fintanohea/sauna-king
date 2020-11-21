@@ -1,47 +1,63 @@
-<ul *ngIf="!loadingCatagories" class="categories-nav-menu list-group flex-md-row justify-content-center">
-  <li 
-    [ngClass]="{'active': selectedNav == 'all'}"
-    class="p-4 list-group-item"
-    (click)="getAllProducts(); setActive('all')">
-    All
-  </li>
-  <li
-    [ngClass]="{'active': selectedNav == category.name}" 
-    class="p-4 list-group-item"
-    *ngFor="let category of categories"
-    (click)="getProductsByCategory(category.id); setActive(category.name)">
-    {{ category.name }}
-  </li>
-</ul>
+<mat-sidenav-container
+    class="refine-search-container" (backdropClick)="close('backdrop')">
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    <mat-form-field appearance="fill">
+      <mat-label>Vendors</mat-label>
+      <mat-select>
+        <mat-option value="all">All</mat-option>
+        <mat-option
+          *ngFor="let vendor of vendors"
+          value="vendor.id">
+          {{ vendor.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-sidenav>
 
-<main class="catalog" *ngIf="!loadingProducts; else loadingBlock">
-  <mat-form-field appearance="fill">
-    <mat-label>Vendors</mat-label>
-    <mat-select>
-      <mat-option value="all">All</mat-option>
-      <mat-option
-        *ngFor="let vendor of vendors"
-        value="vendor.id">
-        {{ vendor.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-sidenav-content>
+    <ul *ngIf="!loadingCatagories" class="categories-nav-menu list-group flex-md-row justify-content-center">
+      <li 
+        [ngClass]="{'active': selectedNav == 'all'}"
+        class="p-4 list-group-item"
+        (click)="getAllProducts(); setActive('all')">
+        All
+      </li>
+      <li
+        [ngClass]="{'active': selectedNav == category.name}" 
+        class="p-4 list-group-item"
+        *ngFor="let category of categories"
+        (click)="getProductsByCategory(category.id); setActive(category.name)">
+        {{ category.name }}
+      </li>
+    </ul>
 
-    <app-products-list-item
-      class="catalog__product"
-      *ngFor="let product of products"
-      [product]="product"
-      (isLoading)="isLoadingFromProduct($event)"
-      (loadedProducts)="loadedProducts($event)">
-        {{ product.name }}
-    </app-products-list-item>
-</main>
+    <p class="m-4" *ngIf="!loadingProducts">
+      <button class="button refine-search-button" (click)="sidenav.open()">
+        <mat-icon aria-hidden="false" aria-label="filter_list icon">filter_list</mat-icon>
+        <span>Refine Search</span>
+      </button>
+    </p>
+    
+    <main class="catalog" *ngIf="!loadingProducts; else loadingBlock">
+        <app-products-list-item
+          class="catalog__product"
+          *ngFor="let product of products"
+          [product]="product"
+          (isLoading)="isLoadingFromProduct($event)"
+          (loadedProducts)="loadedProducts($event)">
+            {{ product.name }}
+        </app-products-list-item>
+    </main>
+    
+    <ng-template #loadingBlock>
+      <main class="catalog catalog--loading">
+        <span class="catalog__loading">
+          <mat-spinner></mat-spinner>
+        </span>
+      </main>
+    </ng-template>
 
-<ng-template #loadingBlock>
-  <main class="catalog catalog--loading">
-    <span class="catalog__loading">
-      <mat-spinner></mat-spinner>
-    </span>
-  </main>
-</ng-template>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
