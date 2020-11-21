@@ -1,6 +1,6 @@
 <mat-sidenav-container
-    class="refine-search-container" (backdropClick)="close('backdrop')">
-  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    class="refine-search-container" (backdropClick)="close()">
+  <mat-sidenav #sidenav (keydown.escape)="close()" disableClose>
     <mat-form-field appearance="fill">
       <mat-label>Vendors</mat-label>
       <mat-select>
