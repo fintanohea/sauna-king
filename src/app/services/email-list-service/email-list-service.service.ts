@@ -26,8 +26,6 @@ export class EmailListServiceService {
 
   /** POST: submit email list subscription form to express mysql service */
   addToEmailListSubmission (addToEmailListSubmission: AddToEmailListSubmission): Observable<any> {
-
-    console.log(addToEmailListSubmission)
     const http$ = this.http.post<any>(
                     this.addToEmailListUrl, 
                     addToEmailListSubmission, 

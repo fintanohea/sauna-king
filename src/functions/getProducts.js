@@ -30,6 +30,7 @@ exports.handler = (event, context, callback) => {
         price: x.defaultProductVariant.price,
         description: x.blurb.en,
         body: blocksToHtml({blocks: x.body.en}),
+        vendor: x.vendor._ref
       }
 
       const image = x.defaultProductVariant.images && x.defaultProductVariant.images.length > 0

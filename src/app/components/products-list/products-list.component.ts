@@ -13,10 +13,12 @@ import { Vendor } from 'src/app/models/Vendor'
 export class ProductsListComponent implements OnInit {
   categories: Category[] = []
   products: Product[] = []
+  displayedProducts: Product[] = []
   vendors: Vendor[] = []
   loadingProducts = false
   loadingCatagories = false
-  selectedNav: string = 'all';
+  selectedNav: string = 'all'
+  selectedVendor: string = 'all'
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   close() {
@@ -31,6 +33,8 @@ export class ProductsListComponent implements OnInit {
     this.getAllProducts()
 
     this.getAllCategories()
+
+    this.getVendors()
   }
 
   getAllProducts() {
@@ -40,6 +44,7 @@ export class ProductsListComponent implements OnInit {
       .subscribe(products => {
         this.loadingProducts = false
         this.products = products
+        this.displayedProducts = products
       })
   }
 
@@ -51,8 +56,6 @@ export class ProductsListComponent implements OnInit {
         this.loadingCatagories = false
         this.categories = categories
       })
-
-    this.getVendors()  
   }
 
   isLoadingFromProduct(isLoading: boolean) {
@@ -70,10 +73,10 @@ export class ProductsListComponent implements OnInit {
       .subscribe(products => {
         this.loadingProducts = false
         this.products = products
+        this.displayedProducts = products
       })
 
     this.getVendors(category)  
-
   }
 
   getVendors(category?: string) {
@@ -85,5 +88,11 @@ export class ProductsListComponent implements OnInit {
 
   setActive(link: string){
     this.selectedNav = link
+  }
+
+  filterByVendor(){
+    this.selectedVendor === "all" 
+      ? this.displayedProducts = this.products
+      : this.displayedProducts = this.products.filter( p => p.vendor === this.selectedVendor ) 
   }
 }
