@@ -56,8 +56,6 @@ export class ProductsListComponent implements OnInit {
         this.loadingCatagories = false
         this.categories = categories
       })
-
-    this.getVendors()  
   }
 
   isLoadingFromProduct(isLoading: boolean) {
