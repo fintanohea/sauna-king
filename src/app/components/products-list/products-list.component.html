@@ -3,11 +3,11 @@
   <mat-sidenav #sidenav (keydown.escape)="close()" disableClose>
     <mat-form-field appearance="fill">
       <mat-label>Vendors</mat-label>
-      <mat-select>
+      <mat-select [(value)]="selectedVendor" (selectionChange)="filterByVendor()">
         <mat-option value="all">All</mat-option>
         <mat-option
           *ngFor="let vendor of vendors"
-          value="vendor.id">
+          [value]="vendor.id">
           {{ vendor.name }}
         </mat-option>
       </mat-select>
@@ -19,7 +19,7 @@
       <li 
         [ngClass]="{'active': selectedNav == 'all'}"
         class="p-4 list-group-item"
-        (click)="getAllProducts(); setActive('all')">
+        (click)="getAllProducts(); getVendors(); setActive('all')">
         All
       </li>
       <li
@@ -41,13 +41,22 @@
     <main class="catalog" *ngIf="!loadingProducts; else loadingBlock">
         <app-products-list-item
           class="catalog__product"
-          *ngFor="let product of products"
+          *ngFor="let product of displayedProducts"
           [product]="product"
           (isLoading)="isLoadingFromProduct($event)"
           (loadedProducts)="loadedProducts($event)">
             {{ product.name }}
         </app-products-list-item>
     </main>
+
+    <div 
+      class="text-center no-products-container" 
+      *ngIf="displayedProducts.length === 0 && !loadingProducts">
+      <img class="mx-auto d-block" src="../../../assets/img/sad_panda.png" alt="sad panda no product">
+      <span>
+        There was no products found
+      </span>
+    </div>
     
     <ng-template #loadingBlock>
       <main class="catalog catalog--loading">

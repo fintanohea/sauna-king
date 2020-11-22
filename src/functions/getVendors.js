@@ -10,12 +10,11 @@ const sanity = sanityClient({
 })
 
 exports.handler = (event, context, callback) => {
-
     const category = event.queryStringParameters.category
     let params = {}
     let query = '*[_type == "vendor"'
 
-    if(category !== undefined){
+    if(category !== 'undefined'){
         query = query + ' && categories[]._ref == $category'
         params = {category: category}
       }
@@ -23,7 +22,7 @@ exports.handler = (event, context, callback) => {
 
     sanity.fetch(query, params).then(results => {
       const vendors = results.map(x => {
-          console.log(x)
+        console.log(x)
         const output = {
             id: x._id,
             name: x.title
