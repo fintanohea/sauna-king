@@ -38,4 +38,9 @@
     }
 }
 
-
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+} 
