@@ -28,6 +28,10 @@ const routes: Routes = [{
   component: ProductsListComponent,
 },
 {
+  path: 'store/:category',
+  component: ProductsListComponent,
+},
+{
   path: 'product/:id',
   component: ProductPageComponent,
 }];

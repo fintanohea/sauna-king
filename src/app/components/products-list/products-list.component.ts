@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
+import { ActivatedRoute } from "@angular/router";
 import { MatSidenav } from '@angular/material/sidenav';
 import { ProductsService } from 'src/app/services/products-service/products.service'
 import { Product } from 'src/app/models/Product'
@@ -17,20 +18,26 @@ export class ProductsListComponent implements OnInit {
   vendors: Vendor[] = []
   loadingProducts = false
   loadingCatagories = false
+  loadingVendors = false
   selectedNav: string = 'all'
   selectedVendor: string = 'all'
   @ViewChild('sidenav') sidenav: MatSidenav;
+  category: string
 
-  close() {
-    this.sidenav.close();
-  }
-
-  constructor(private productsService: ProductsService) { }
+  constructor(
+    private productsService: ProductsService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
-    this.loadingProducts = true
+    this.route.paramMap.subscribe(params => {
+      this.category = params.get("category") // Subscription param
+      this.getProductsByCategory(this.category)
+    })
 
-    this.getAllProducts()
+    this.category 
+      ? this.getProductsByCategory(this.category)
+      : this.getAllProducts()
 
     this.getAllCategories()
 
@@ -80,10 +87,13 @@ export class ProductsListComponent implements OnInit {
   }
 
   getVendors(category?: string) {
+    this.loadingVendors = true
+
     this.productsService.getVendors(category)
-    .subscribe(vendors => {
-      this.vendors = vendors
-    })
+      .subscribe(vendors => {
+        this.vendors = vendors
+        this.loadingVendors = false
+      })
   }
 
   setActive(link: string){
@@ -94,5 +104,9 @@ export class ProductsListComponent implements OnInit {
     this.selectedVendor === "all" 
       ? this.displayedProducts = this.products
       : this.displayedProducts = this.products.filter( p => p.vendor === this.selectedVendor ) 
+  }
+
+  closeSideNav() {
+    this.sidenav.close();
   }
 }
