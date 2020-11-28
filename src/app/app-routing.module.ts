@@ -6,6 +6,7 @@ import { SteamcubeProductComponent } from './components/steamcube-product/steamc
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +35,14 @@ const routes: Routes = [{
 {
   path: 'product/:id',
   component: ProductPageComponent,
+},
+{
+  path: '404', 
+  component: NotFoundComponent
+},
+{
+  path: '**', 
+  redirectTo: '/404'
 }];
 
 @NgModule({

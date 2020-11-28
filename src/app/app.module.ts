@@ -25,6 +25,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ContactFormComponent,
     HomepageComponent,
     ProductPageComponent,
-    FooterComponent
+    FooterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
