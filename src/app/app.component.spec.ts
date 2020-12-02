@@ -3,11 +3,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { EmailListServiceService } from './services/email-list-service/email-list-service.service'
+import { EmailListServiceService } from './services/email-list-service/email-list-service.service';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
 let component: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
 
