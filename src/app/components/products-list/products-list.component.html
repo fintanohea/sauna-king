@@ -33,16 +33,35 @@
       </ul>  
     </div>
     
+    <div class="d-flex">
+      <div class="mr-auto p-2">
+        <button class="button refine-search-button" (click)="sidenav.open()">
+          <mat-icon aria-hidden="false" aria-label="filter_list icon">filter_list</mat-icon>
+          <span>Refine Search</span>
+        </button>
+      </div>
+      <div class="p-2">
+        <button class="button refine-search-button" (click)="sidenav.open()">
+          <mat-icon aria-hidden="false" aria-label="list icon">list</mat-icon>
+        </button>
+      </div>
+      <div class="p-2">
+        <button class="button refine-search-button" (click)="sidenav.open()">
+          <mat-icon aria-hidden="false" aria-label="view_module icon">view_module</mat-icon>
+        </button>
+      </div>
+    </div>
 
-    <p class="m-4" *ngIf="!loadingProducts">
-      <button class="button refine-search-button" (click)="sidenav.open()">
-        <mat-icon aria-hidden="false" aria-label="filter_list icon">filter_list</mat-icon>
-        <span>Refine Search</span>
-      </button>
-    </p>
+    
+
+    <app-product-list-table
+      [(displayedProducts)]='displayedProducts'>
+    </app-product-list-table> 
     
     <main class="catalog" *ngIf="!loadingProducts && !loadingCatagories && !loadingVendors; else loadingBlock">
-        <app-products-list-item
+       
+      
+      <app-products-list-item
           class="catalog__product"
           *ngFor="let product of displayedProducts"
           [product]="product"
